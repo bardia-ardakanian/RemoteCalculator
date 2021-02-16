@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 
 public class Controller {
 
@@ -25,7 +26,8 @@ public class Controller {
     }
 
     @FXML
-    public void proccessOperators(javafx.event.ActionEvent actionEvent) {
+    public void proccessOperators(javafx.event.ActionEvent actionEvent) throws IOException {
+        int port = 7660;
         String value = ((Button) actionEvent.getSource()).getText();
 
         if (!value.equals("=")){
@@ -38,7 +40,11 @@ public class Controller {
             if (operator.isBlank()) return;
 
             Double number2 = Double.parseDouble(textField.getText());
-            textField.setText(String.valueOf(Model.compute(number1, number2, operator)));
+
+            //client
+            Main.client.write(number1 + " " + operator + " " + number2);
+            Main.server.write();
+            textField.setText(Main.client.read());
 
             //reset
             operator = "";
