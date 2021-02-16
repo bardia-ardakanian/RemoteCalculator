@@ -1,5 +1,7 @@
 package sample;
 
+import sample.Model;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -59,32 +61,7 @@ public class Server implements Runnable {
         op = sc.next();
         num2 = sc.nextDouble();
         //write result
-        String result = String.valueOf(compute(num1, num2, op));
+        String result = String.valueOf(Model.compute(num1,num2,op));
         out.write(result.getBytes());
-    }
-
-    private double compute(double num1, double num2, String op){
-        switch (op){
-            case "+":
-                return num1 + num2;
-            case "-":
-                return num1 - num2;
-            case "*":
-                return num1 * num2;
-            case "/":
-                try{
-                    return num1 / num2;
-                } catch (ArithmeticException  e){
-                    System.out.println(e.toString());
-                }
-            case "%":
-                try{
-                    return num1 % num2;
-                } catch (ArithmeticException  e){
-                    System.out.println(e.toString());
-                }
-            default:
-                return 0;
-        }
     }
 }

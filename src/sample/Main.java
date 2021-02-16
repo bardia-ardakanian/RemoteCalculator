@@ -10,8 +10,8 @@ import java.util.concurrent.Executors;
 
 public class Main {
     private static int port = 7660;
-    protected static Server server = new Server(port);
-    protected static Client client = new Client("127.0.0.1", port);
+    protected static sample.Server server = new sample.Server(port);
+    protected static sample.Client client = new sample.Client("127.0.0.1", port);
 
     public static void main(String[] args) throws IOException {
         ExecutorService pool = Executors.newCachedThreadPool();
@@ -20,6 +20,6 @@ public class Main {
         pool.execute(client);
         pool.shutdown();
 
-        Application.launch(Calculator.class, args);
+        Application.launch(sample.Calculator.class, args);
     }
 }
