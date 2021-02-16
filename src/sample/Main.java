@@ -9,7 +9,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Main {
-    private static int port = 7660;
+    private static int port = 5000;
     protected static Server server = new Server(port);
     protected static Client client = new Client("127.0.0.1", port);
 
