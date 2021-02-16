@@ -27,7 +27,6 @@ public class Controller {
 
     @FXML
     public void proccessOperators(javafx.event.ActionEvent actionEvent) throws IOException {
-        int port = 7660;
         String value = ((Button) actionEvent.getSource()).getText();
 
         if (!value.equals("=")){
